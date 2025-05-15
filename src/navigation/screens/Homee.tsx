@@ -1,10 +1,24 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import useStore from "../../store/store";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const Homee = () => {
+	const { setLoggedIn } = useStore();
+
+	const handleLogout = () => {
+		setLoggedIn(false);
+	};
 	return (
 		<SafeAreaView className=" bg-white flex-1">
+			<TouchableOpacity
+				className="absolute top-14 left-4 z-10"
+				onPress={handleLogout}
+			>
+				<AntDesign name="leftcircle" size={24} color="#422006" />
+			</TouchableOpacity>
+
 			<View className=" flex-1  relative justify-center items-center">
 				<Image
 					source={require("../../assets/image/cake.png")}
@@ -27,3 +41,6 @@ const Homee = () => {
 };
 
 export default Homee;
+function setLoggedIn(arg0: boolean) {
+	throw new Error("Function not implemented.");
+}

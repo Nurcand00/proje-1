@@ -5,9 +5,15 @@ import LoginInput from "../../Components/LoginInput";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Ionicons } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import useStore from "../../store/store";
 
 const Loginn = () => {
 	const [isChecked, setIsChecked] = useState(false);
+	const { setLoggedIn } = useStore();
+
+	const handleLogin = () => {
+		setLoggedIn(true);
+	};
 
 	const toggleCheckBox = () => {
 		setIsChecked(!isChecked);
@@ -53,7 +59,10 @@ const Loginn = () => {
 					<Text className="text-gray-700">keep me logged in</Text>
 				</Pressable>
 				<View className="flex-1 items-center">
-					<TouchableOpacity className="h-14 w-56 rounded-full py-4 bg-yellow-950 mt-20 ">
+					<TouchableOpacity
+						onPress={handleLogin}
+						className="h-14 w-56 rounded-full py-4 bg-yellow-950 mt-20 "
+					>
 						<Text className="text-center text-white font-semibold text-lg">
 							Login
 						</Text>
